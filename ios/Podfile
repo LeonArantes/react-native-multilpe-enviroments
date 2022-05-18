@@ -4,7 +4,7 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 platform :ios, '11.0'
 install! 'cocoapods', :deterministic_uuids => false
 
-target 'zenix' do
+abstract_target 'zenixCommonPods' do
   config = use_native_modules!
 
   # Flags change depending on the env values.
@@ -19,9 +19,13 @@ target 'zenix' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  target 'zenixTests' do
-    inherit! :complete
-    # Pods for testing
+  target 'zenix' do
+  end
+
+  target 'zenixDev' do
+  end
+
+  target 'zenixStg' do
   end
 
   # Enables Flipper.
